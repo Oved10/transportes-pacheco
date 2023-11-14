@@ -1,0 +1,43 @@
+:root{
+	--warning: #ffd700;
+	--ligth:#ffffff;
+	--grey:#efefef;
+
+}
+
+body{
+	overflow: hidden;
+	font-family: 'Muli',sans-serif;
+	font-weight: 300;
+	color: var(--warning);
+	margin: 0px;
+}
+
+.bg-warning{background-color: var(--warning) !important;}
+
+#sidebar-container{
+	min-height: 100vh;
+}
+
+#siderbar-container .logo{
+	padding: .875rem 1.25rem;
+}
+#sidebar-container .menu{
+	width: 18rem;
+}
+ 
+a:hover{
+	text-decoration: none;
+}
+
+.logo{
+	max-width: 150px;
+
+}
+
+header{
+	display: flex;
+	height: 70px;
+	background-color: black;
+	justify-content: space-between;
+ }
