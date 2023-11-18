@@ -163,9 +163,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                     onclick="llenar_datos('.$persona->id.',`'.$persona->nombre.'`,`'.$persona->pais.'`,`'.$persona->telefono.'`,`'.$persona->puesto.'`,`'.$persona->estado.'`)"><i class="bi bi-pencil-square"></i> </button> </td>
                                     <td><a href="'.base_url('index.php/personal/eliminar/'.$persona->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/></td>'?>
-                                    <td>  <button class="btn-xs btn btn-info text-white">
-                                      <i class="bi bi-pencil"></i>
-                                      </button></td>
+                                    <td> 
+                                       <button type="button" class="btn btn-info text-white"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil"></i>
+                                           
+                                    </button>
+                                    </td>
 
 
                                 </tr>

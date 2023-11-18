@@ -15,6 +15,7 @@ class Pilotos extends CI_Controller {
 	{
 		$datos['pilotos']=$this->piloto_model->seleccionar_todo();
 		$this->load->view('pilotos',$datos);
+		$this->load->view('personal/comentario_pilotos',);
 		$this->load->view('personal/agregar_piloto',);
 	}
 	public function agregar(){

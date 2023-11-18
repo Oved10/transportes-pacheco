@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-bg-warning">
-        <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black">Comentario De Personal</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: black">Comentario De Pilotos</h1>
         <button onclick="document.location.reload();" type="button" class=" btn btn-danger" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body text-bg-dark">
