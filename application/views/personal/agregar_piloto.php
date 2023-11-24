@@ -66,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         let url="<?php  echo base_url('index.php/pilotos/editar');?>";
 
         
-        const llenar_datos=(id,nombre,no_licencia,fecha_vencimiento,pais,telefono,puesto,estado)=>{
+        const llenar_datos=(id,nombre,no_licencia,fecha_vencimiento,pais,telefono,camion,estado)=>{
            let path = url+"/"+id;
            document.getElementById('form-piloto').setAttribute('action',path);
 
@@ -75,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           document.getElementById('F').value= fecha_vencimiento;
           document.getElementById('P').value= pais;
            document.getElementById('T').value= telefono;
-          document.getElementById('Pues').value= puesto;
+          document.getElementById('C').value= camion;
           document.getElementById('E').value= estado;
 
         };
