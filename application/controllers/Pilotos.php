@@ -27,6 +27,7 @@ class Pilotos extends CI_Controller {
 		$piloto['telefono']=$this->input->post('Tel');
 		$piloto['camion']=$this->input->post('Camion');
 		$piloto['estado']=$this->input->post('Estado');
+		$piloto['comentario']=$this->input->post('Comentario');
 
 		$this->piloto_model->agregar($piloto);
 
@@ -48,6 +49,7 @@ class Pilotos extends CI_Controller {
 		$piloto['telefono']=$this->input->post('Tel');
 		$piloto['camion']=$this->input->post('Camion');
 		$piloto['estado']=$this->input->post('Estado');
+		$piloto['comentario']=$this->input->post('Comentario');
 
 		$this->piloto_model->actualizar($piloto,$id_piloto);
 

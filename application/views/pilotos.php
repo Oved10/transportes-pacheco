@@ -142,9 +142,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           <th scope="col">Telefono</th>
                           <th scope="col">Camion</th>
                           <th scope="col">Estado</th>
-                          <th scope="col">Editar</th>
-                          <th scope="col">Eliminar</th>
-                          <th scope="col">Comentar</th>
+                          <th scope="col">Acciones</th>
+                          
                         </tr>
                       </thead>
                       <tbody>
@@ -162,16 +161,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                    <td>+<?php echo $piloto->pais ?> <?php echo $piloto->telefono ?></td>
                                    <td><?php echo $piloto->camion ?></td>
                                    <td><?php echo $piloto->estado ?></td>
-                                   <td><?php echo ' <button type="button" class="btn btn-warning text-white"
+                                   <td><?php echo ' <button type="button" class="btn btn-info text-white"
                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
 
-                                    onclick="llenar_datos('.$piloto->id.',`'.$piloto->nombre.'`,`'.$piloto->no_licencia.'`,`'.$piloto->fecha_vencimiento.'`,`'.$piloto->pais.'`,`'.$piloto->telefono.'`,`'.$piloto->camion.'`,`'.$piloto->estado.'`)"><i class="bi bi-pencil-square"></i> </button> </td>
-                                    <td><a href="'.base_url('index.php/pilotos/eliminar/'.$piloto->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/></td>'?>
-                                    <td> 
-                                      <button type="button" class="btn btn-info text-white"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil"></i>
-                                           
-                                    </button>
-                                  </td>
+                                    onclick="llenar_datos('.$piloto->id.',`'.$piloto->nombre.'`,`'.$piloto->no_licencia.'`,`'.$piloto->fecha_vencimiento.'`,`'.$piloto->pais.'`,`'.$piloto->telefono.'`,`'.$piloto->camion.'`,`'.$piloto->estado.'`,`'.$piloto->comentario.'`)"><i class="bi bi-pencil"></i> </button>
+
+                                     <a href="'.base_url('index.php/pilotos/eliminar/'.$piloto->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/>
+
+                                     </td>'?>
+                                 
 
 
                                 </tr>

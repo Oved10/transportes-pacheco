@@ -128,7 +128,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               
             </div>
             <div class="row">
-              <div class="col-12">           
+              <div class="col-12">
+        
                 <div class="card-header">                                
                 </div>
                 <div class="card-body">
@@ -140,9 +141,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           <th scope="col">Telefono</th>
                           <th scope="col">Puesto</th>
                           <th scope="col">Estado</th>
-                          <th scope="col">Editar</th>
-                          <th scope="col">Eliminar</th>
-                          <th scope="col">Comentar</th>
+                          <th scope="col">Acciones</th>
+                          
+                       
                         </tr>
                       </thead>
                       <tbody>
@@ -158,16 +159,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                    <td>+<?php echo $persona->pais ?> <?php echo $persona->telefono ?> </td>
                                    <td><?php echo $persona->puesto ?></td>
                                    <td><?php echo $persona->estado ?></td>
-                                   <td><?php echo ' <button type="button" class="btn btn-warning text-white"
+                                   <td><?php echo '  
+                                    <button type="button" class="btn btn-info text-white"
                                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
 
-                                    onclick="llenar_datos('.$persona->id.',`'.$persona->nombre.'`,`'.$persona->pais.'`,`'.$persona->telefono.'`,`'.$persona->puesto.'`,`'.$persona->estado.'`)"><i class="bi bi-pencil-square"></i> </button> </td>
-                                    <td><a href="'.base_url('index.php/personal/eliminar/'.$persona->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/></td>'?>
-                                    <td> 
-                                       <button type="button" class="btn btn-info text-white"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil"></i>
-                                           
-                                    </button>
-                                    </td>
+                                    onclick="llenar_datos('.$persona->id.',`'.$persona->nombre.'`,`'.$persona->pais.'`,`'.$persona->telefono.'`,`'.$persona->puesto.'`,`'.$persona->estado.'`,`'.$persona->comentario.'`)"><i class="bi bi-pencil"></i> </button>
+
+                                    <a href="'.base_url('index.php/personal/eliminar/'.$persona->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/>
+
+                                    </td>  
+                                   '?>
 
 
                                 </tr>
@@ -194,7 +195,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <!-- Fin Menu Lateral-->
 
-     
+    <script src="<?= base_url('public/js/personal.js'); ?>"></script>
     <script src="<?= base_url('public/js/buscar_camion.js'); ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>

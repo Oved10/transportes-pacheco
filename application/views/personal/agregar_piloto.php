@@ -48,6 +48,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     
                   </div> 
 
+                   <div class="form-group col-sm-12 my-2">
+                    <label for="" style="color: white">Comentario</label>
+                    <textarea class="form-control" name="Comentario" id="CP" rows="3" ></textarea>
+                    
+                  </div>
+
 
 
                 </div>
@@ -66,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         let url="<?php  echo base_url('index.php/pilotos/editar');?>";
 
         
-        const llenar_datos=(id,nombre,no_licencia,fecha_vencimiento,pais,telefono,camion,estado)=>{
+        const llenar_datos=(id,nombre,no_licencia,fecha_vencimiento,pais,telefono,camion,estado,comentario)=>{
            let path = url+"/"+id;
            document.getElementById('form-piloto').setAttribute('action',path);
 
@@ -77,6 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            document.getElementById('T').value= telefono;
           document.getElementById('C').value= camion;
           document.getElementById('E').value= estado;
+          document.getElementById('CP').value= comentario;
 
         };
       </script>

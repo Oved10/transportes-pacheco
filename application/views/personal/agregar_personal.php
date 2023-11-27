@@ -40,12 +40,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     
                   </div> 
 
+                   <div class="form-group col-sm-12 my-2">
+                    <label for="" style="color: white">Comentario</label>
+                    <textarea class="form-control" name="Comentario" id="C" rows="3" ></textarea>
+                    
+                  </div>
+
 
 
                 </div>
                 <div class="d-grid gap-2 d-md-block my-3">
                  <button type="submit" class="btn btn-primary btn-block " style="padding: 8px 70px "><i class="fa-solid fa-floppy-disk"></i> Guardar </button>              
                 </div>
+
+                 
                 
                 
                <?php echo form_close();?>
@@ -53,12 +61,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
   </div>
 </div>
+
+
 <script>
 
         let url="<?php  echo base_url('index.php/personal/editar');?>";
 
         
-        const llenar_datos=(id,nombre,pais,telefono,puesto,estado)=>{
+        const llenar_datos=(id,nombre,pais,telefono,puesto,estado,comentario)=>{
            let path = url+"/"+id;
            document.getElementById('form-persona').setAttribute('action',path);
 
@@ -67,6 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            document.getElementById('T').value= telefono;
           document.getElementById('Pues').value= puesto;
           document.getElementById('E').value= estado;
+          document.getElementById('C').value= comentario;
 
         };
       </script>
