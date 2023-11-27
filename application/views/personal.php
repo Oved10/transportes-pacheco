@@ -118,7 +118,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="d-grid gap-2 d-md-block my-5">
                       <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="fa-solid fa-plus"></i>Agregar</button>
-                    <button type="submit" class="btn btn-danger btn-block " style="padding: 8px 20px "><i class="fa-solid fa-print"></i> PDF </button>
                      <button type="submit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="fa-solid fa-file-excel"></i> Excel </button>
                 
                 </div>
