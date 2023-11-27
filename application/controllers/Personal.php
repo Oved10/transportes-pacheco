@@ -16,7 +16,6 @@ class Personal extends CI_Controller {
 	{
 		$datos['personal']=$this->personal_model->seleccionar_todo();
 		$this->load->view('personal',$datos); 
-		$this->load->view('personal/comentario_personal');
 		$this->load->view('personal/agregar_personal');
 	}
 	public function agregar(){

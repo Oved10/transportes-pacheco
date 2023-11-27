@@ -49,6 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
 
 
+
+            
+
+
         </style>
 
   </head>
@@ -120,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="d-grid gap-2 d-md-block my-5">
                 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#agregar_gastos" aria-controls="offcanvasExample"><i class="fa-solid fa-plus"></i>
-                  Agregar
+                   Agregar
                 </button>
                      <button type="submit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="fa-solid fa-file-excel"></i> Excel </button>
                 
@@ -130,12 +134,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </form>
               
             </div>
-            <div class="row">
-              <div class="col-12">           
+            <div class="row ">
+              <div class="col-9">           
                 <div class="card-header">                                
                 </div>
                 <div class="card-body">
-                  <table class="table table-dark table-striped table_id ">
+                  <table  class="table table-dark table-striped table_id "  >
                       <thead>
                         <tr>
                           <th scope="col">No.</th>
