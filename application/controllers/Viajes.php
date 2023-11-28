@@ -25,11 +25,13 @@ class Viajes extends CI_Controller {
 		$viaje['fecha_salida']=$this->input->post('FS');
 		$viaje['fecha_entrada']=$this->input->post('FE');
 		$viaje['camion']=$this->input->post('truck');
-		$viaje['km']=$this->input->post('KM');
+		$viaje['valor_viaje']=$this->input->post('KM');
+		$viaje['precio_disel']=$this->input->post('PDisel');
 		$viaje['disel']=$this->input->post('DiselC');
-		$viaje['valor_viaje']=$this->input->post('PrecioV');
-		$viaje['gastos']=$this->input->post('GastosV');
-		$viaje['gastos_piloto']=$this->input->post('GastosP');
+		$viaje['gastos']=$this->input->post('Gastos');
+		 
+	 
+		 
 
 		$this->viajes_model->agregar($viaje);
 
@@ -46,11 +48,10 @@ class Viajes extends CI_Controller {
 		$viaje['fecha_salida']=$this->input->post('FS');
 		$viaje['fecha_entrada']=$this->input->post('FE');
 		$viaje['camion']=$this->input->post('truck');
-		$viaje['km']=$this->input->post('KM');
+		$viaje['valor_viaje']=$this->input->post('KM');
+		$viaje['precio_disel']=$this->input->post('PDisel');
 		$viaje['disel']=$this->input->post('DiselC');
-		$viaje['valor_viaje']=$this->input->post('PrecioV');
-		$viaje['gastos']=$this->input->post('GastosV');
-		$viaje['gastos_piloto']=$this->input->post('GastosP');
+		$viaje['gastos']=$this->input->post('Gastos');
 
 
 		$this->viajes_model->actualizar($viaje,$id_viaje);
