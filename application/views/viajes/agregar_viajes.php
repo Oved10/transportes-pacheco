@@ -20,42 +20,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                   <div class="form-group col-sm-12 my-3">
                     <label for="" style="color: white" >Fecha De Entrada</label>
-                    <input type="date" name="FE" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese La Fecha" id="FE">
+                    <input type="date" name="FE" class="form-control me-2 light-table-filter" data-table="table_id"  id="FE">
                   </div> 
 
                   <div class="form-group col-sm-12 my-3">
-                    <label for="" style="color: white" >Camion</label>
-                    <input type="text" name="truck" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese El Camion" id="truck">
+                    <label for="" style="color: white" >Placa</label>
+                    <input type="text" name="truck" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese La Placa" id="truck">
                   </div> 
+
                   <div class="form-group col-sm-12 my-3">
-                    <label for=""  style="color: white">Km Recorridos</label>
-                    <input type="text" name="KM" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese los Km" id="KM">
+                    <label for=""  style="color: white">Precio Del Viaje</label>
+                    <input type="text" name="KM" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese El Precio De Viaje" id="KM">
                   </div> 
+
+                    <div class="form-group col-sm-12 my-3">
+                    <label for=""  style="color: white">Precio Del Disel</label>
+                    <input type="text" name="PDisel" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Q" id="PDisel">
+                  </div>
+
+                  
 
                   <div class="form-group col-sm-12 my-3">
                     <label for=""  style="color: white">Disel Consumido</label>
                     <input type="text" name="DiselC" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese los Galones" id="DiselC">
                   </div> 
 
-                  <div class="form-group col-sm-12 my-3">
-                    <label for="" style="color: white" >Precio Del Viaje</label>
-                    <input type="text" name="PrecioV" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Q." id="PrecioV">
-                  </div> 
-
-
+                  
                     <div class="form-group col-sm-12 my-3">
-                    <label for="" style="color: white" >Gastos</label>
-                    <input type="text" name="GastosV" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Q." id="GastosV"><br>
-                    
-                  </div> 
-                     <div class="form-group col-sm-12 my-3">
-                    <label for="" style="color: white" >Gastos Piloto</label>
-                    <input type="text" name="GastosP" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Q." id="GastosP"><br>
-                    
+                    <label for=""  style="color: white">Gastos</label>
+                    <input type="text" name="Gastos" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Q" id="G">
                   </div>
 
+                  
 
-                </div>
+
+                  
                 <div class="d-grid gap-2 d-md-block my-2">
                    <button type="submit" class="btn btn-primary btn-block " style="padding: 8px 70px "><i class="fa-solid fa-floppy-disk"></i> Guardar </button>
                     
@@ -74,18 +73,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         let url="<?php  echo base_url('index.php/viajes/editar');?>";
 
         
-        const llenar_datos=(id,fecha_salida,fecha_entrada,camion,km,disel,valor_viaje,gastos,gastos_piloto)=>{
+        const llenar_datos=(id,fecha_salida,fecha_entrada,camion,valor_viaje,disel,precio_disel,gastos)=>{
            let path = url+"/"+id;
             document.getElementById('form-viaje').setAttribute('action',path);
 
           document.getElementById('FS').value= fecha_salida;
           document.getElementById('FE').value= fecha_entrada;
           document.getElementById('truck').value= camion;
-          document.getElementById('KM').value= km;
+          document.getElementById('KM').value= valor_viaje;
+          document.getElementById('PDisel').value= precio_disel;
           document.getElementById('DiselC').value= disel;
-          document.getElementById('PrecioV').value= valor_viaje;
-          document.getElementById('GastosV').value= gastos;
-          document.getElementById('GastosP').value= gastos_piloto;
+          document.getElementById('G').value= gastos;
+           
 
         };
       </script>

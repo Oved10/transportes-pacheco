@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
           </div>
           <div class="menu">
-            <a class="btn-v mx-3" href="<?= base_url("index.php/Viajes")?>" class="d-block text-light my-3 p-3"><i class="fa-sharp fa-solid fa-road mx-2 lead"></i>Viaje</a>
+                 <a class="btn-v mx-3" href="<?= base_url("index.php/Viajes")?>" class="d-block text-light my-3 p-3"><i class="fa-sharp fa-solid fa-road mx-2 lead"></i>Viaje</a>
             <a class="btn-b mx-3" href="<?= base_url("index.php/camion")?>" class="d-block text-light p-3"><i class="bi bi-truck mx-2 lead"></i>Camion</a>
              <div class="btn-group dropend">
             <button class="btn-p mx-3 " type="button" data-bs-toggle="dropdown"><i class="bi bi-people-fill mx-2 lead"></i>
@@ -116,14 +116,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                 </div>
-                <div class="d-grid gap-2 d-md-block my-5">
-                      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="fa-solid fa-plus"></i>Agregar</button>
-                     <button type="submit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="fa-solid fa-file-excel"></i> Excel </button>
-                
-                </div>
-                
-                
+                        
               </form>
+              <form action="<?php  base_url();?> excel_personal/exportarDatos" method="post">
+                
+                  <div class="d-grid gap-2 d-md-block my-5">
+                      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-plus-lg"></i> Agregar</button>
+
+                      <button  type="sumit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="bi bi-file-earmark-excel-fill"></i> Excel</button>
+
+
+
+                </div>
+              </form>
+
+
               
             </div>
             <div class="row">

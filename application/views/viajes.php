@@ -110,17 +110,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div> 
 
                   <div class="form-group col-sm-4">
-                    <label for="" style="color: white" >Camion</label>
-                    <input type="text" name="truck" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese El Camion" id="trucks">
+                    <label for="" style="color: white" >Placa Del Camion</label>
+                    <input type="text" name="truck" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese La Placa" id="trucks">
                   </div> 
                 
 
                 </div>
-                <div class="d-grid gap-2 d-md-block my-5">
-                  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="fa-solid fa-plus"></i> Agregar</button>
-                     <button type="submit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="fa-solid fa-file-excel"></i> Excel </button>
+                <form action="<?php  base_url();?> excel_personal/exportarDatos" method="post">
                 
+                  <div class="d-grid gap-2 d-md-block my-5">
+                      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-plus-lg"></i> Agregar</button>
+
+                      <button  type="sumit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="bi bi-file-earmark-excel-fill"></i> Excel</button>
+
+
+
                 </div>
+              </form>
                 
                 
              </form>
@@ -138,11 +144,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <th scope="col">Fecha De Salida</th>
                               <th scope="col">Fecha De Entrada</th>
                               <th scope="col">Camion</th>
-                              <th scope="col">Km Recorridos</th>
+                              <th scope="col">Valor De Viaje</th>
+                              <th scope="col">Precio Disel</th>
                               <th scope="col">Disel Consumido</th>
-                              <th scope="col">Precio Del Viaje</th>
-                              <th scope="col">Gastos De Camion</th>
-                              <th scope="col">Gastos De Piloto</th>
+                              <th scope="col">Gastos De Viaje</th>
+                               <th scope="col">Total Del Viaje</th>
                               <th scope="col">Editar</th>
                               <th scope="col">Eliminar</th>
                             </tr>
@@ -150,32 +156,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           <tbody>
 
                             <?php
-                              $count =0;
+                              $count =1;
 
-                              foreach ($viajes as $viaje){
-                                echo'
+                              foreach ($viajes as $viaje):?>
+                               
                                     <tr>
 
-                                       <td>'.++$count.'</td>
-                                       <td>'.$viaje->fecha_salida.'</td>
-                                       <td>'.$viaje->fecha_entrada.'</td>
-                                       <td>'.$viaje->camion.'</td>
-                                       <td>'.$viaje->km.'km</td>
-                                       <td>'.$viaje->disel.'gal</td>
-                                       <td>Q.'.$viaje->valor_viaje.'</td>
-                                       <td>Q.'.$viaje->gastos.'</td>
-                                        <td>Q.'.$viaje->gastos_piloto.'</td>
-                                       <td> <button type="button" class="btn btn-warning text-white"
+                                       <td><?php echo $count++ ?></td>
+                                       <td><?php echo  $viaje->fecha_salida?> </td>
+                                       <td><?php echo $viaje->fecha_entrada ;?>  </td>
+                                       <td><?php echo $viaje->camion; ?> </td>
+                                       <td>Q.<?php echo $viaje->valor_viaje ; ?> </td>
+                                        <td>Q.<?php echo $viaje->precio_disel; ?> </td>
+                                       <td><?php echo $viaje->disel; ?> gal</td>                                     
+                                       <td>Q.<?php echo $viaje->gastos; ?> </td>
+                                        <td>
+
+                                          Q.<?php $total=0; ?> 
+
+                                      </td>
+                                       <td> <?php echo '   <button type="button" class="btn btn-warning text-white"
                                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
-                                        onclick="llenar_datos('.$viaje->id.',`'.$viaje->fecha_salida.'`,`'.$viaje->fecha_entrada.'`,`'.$viaje->camion.'`,`'.$viaje->km.'`,`'.$viaje->disel.'`,`'.$viaje->valor_viaje.'`,`'.$viaje->gastos.'`,`'.$viaje->gastos_piloto.'`)"><i class="bi bi-pencil-square"></i> </button> </td>
-                                        <td><a href="'.base_url('index.php/viajes/eliminar/'.$viaje->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/></td>
+                                        onclick="llenar_datos('.$viaje->id.',`'.$viaje->fecha_salida.'`,`'.$viaje->fecha_entrada.'`,`'.$viaje->camion.'`,`'.$viaje->valor_viaje.'`,`'.$viaje->precio_disel.'`,`'.$viaje->disel.'`,`'.$viaje->gastos.'`)"><i class="bi bi-pencil-square"></i> </button> </td>
+                                        <td><a href="'.base_url('index.php/viajes/eliminar/'.$viaje->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/></td>'; ?>
 
 
                                     </tr>
 
-                                ';
-                              }
-                            ?>
+                                
+                              
+                            <?php endforeach ?>
                           </tbody>
                         </table>
                       
@@ -198,6 +208,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  
 
     <script src="<?= base_url('public/js/buscar_viaje.js'); ?>"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -1,24 +1,14 @@
-<?php
+ <?php 
 
-/**
-* 
-*/
-class Excel_personal_model extends CI_Model
-{
-	
-	public function getPersona(){
-		$this->db->select('nombre, telefono, puesto, estado, comentario');
-		$this->db->from('personal');
-		$query = $this->db->get();
-					
-		return $query;
-	}
+ 	class Excel_personal_model extends CI_Model{
 
-	/*public function getPersonas(){
-		$this->db->select('nombre, telefono, puesto, estado, comentario');
-		$this->db->from('personal');
-		$query = $this->db->get();
-					
-		return $query->result();
-	}*/
-}
+ 		public function getpersonal(){
+
+ 			$this->db->select('nombre, pais, telefono, puesto, estado');
+ 			$this->db->from('personal');
+
+ 			$r = $this->db->get();
+ 			return $r->result();
+
+ 		}
+ 	}
