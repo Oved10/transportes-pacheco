@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <link rel="stylesheet" type="text/css" href="<?= base_url('public/estilos.css') ?>">
         <script src="https://kit.fontawesome.com/273a33183e.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <style type="text/css">
          
             .btn-b{
@@ -25,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               margin: 20px 10px;
               background-color: black;
               color: yellow;
-              padding: 12px 80px;
+              padding: 10px 83px;
               text-decoration: none;
 
             }
@@ -73,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
           <div class="menu">
             <a class="btn-v mx-3
-            " href="<?= base_url("index.php/Viajes")?>" class="d-block text-light my-3 p-3"><i class="fa-sharp fa-solid fa-road mx-2 lead"></i>Viaje</a>
+            " href="<?= base_url("index.php/Viajes")?>" class="d-block text-light my-3 p-3"><i class="bi bi-sign-merge-right mx-2 lead"></i>Viaje</a>
             <a class="btn-b mx-3" href="<?= base_url("index.php/camion")?>" class="d-block text-light p-3"><i class="bi bi-truck mx-2 lead"></i>Camion</a>
             <div class="btn-group dropend">
             <button class="btn-p mx-3 " type="button" data-bs-toggle="dropdown"><i class="bi bi-people-fill mx-2 lead"></i>

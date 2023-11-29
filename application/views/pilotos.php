@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               margin: 20px 10px;
               background-color: black;
               color: yellow;
-              padding: 12px 80px;
+              padding: 10px 83px;
               text-decoration: none;
 
             }
@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
           </div>
           <div class="menu">
-            <a class="btn-v mx-3" href="<?= base_url("index.php/Viajes")?>" class="d-block text-light my-3 p-3"><i class="fa-sharp fa-solid fa-road mx-2 lead"></i>Viaje</a>
+            <a class="btn-v mx-3" href="<?= base_url("index.php/Viajes")?>" class="d-block text-light my-3 p-3"><i class="bi bi-sign-merge-right mx-2 lead"></i>Viaje</a>
             <a class="btn-b mx-3" href="<?= base_url("index.php/camion")?>" class="d-block text-light p-3"><i class="bi bi-truck mx-2 lead"></i>Camion</a>
              <div class="btn-group dropend">
             <button class="btn-p mx-3 " type="button" data-bs-toggle="dropdown"><i class="bi bi-people-fill mx-2 lead"></i>
