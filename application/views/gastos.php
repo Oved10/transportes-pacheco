@@ -38,6 +38,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               text-decoration: none;
 
             }
+            .btn-g{
+              display: inline-block;
+              margin: 20px 10px;
+              background-color: black;
+              color: yellow;
+              padding: 10px 60px;
+              text-decoration: none;
+
+            }
             .titulo{
               font-size: 20px;
             }
@@ -62,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="d-flex">
         <div id="sidebar-container"class="bg-warning">
           <div class="logo">
-            <h4 class="text-dark font-weight-bold my-3 mx-5">Transportes Pacheco</h4><img src="<?= base_url('public/img/logo.jpg')?>" class="img-fluid rounded-circle logo mr-2 mx-5">
+            <h4 class="text-dark font-weight-bold my-3 mx-5" style="font-family: Alegrian; font-size: 30px ; text-align: center;">Transportes Pacheco</h4><img src="<?= base_url('public/img/logo.jpg')?>" class="img-fluid rounded-circle logo mr-2 mx-5">
             <br>
             
           </div>
@@ -80,6 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
           </div>
             <a  class="btn-b mx-3" href="<?= base_url("index.php/Gastos")?>" class="d-block text-light p-3"><i class="bi bi-gear mx-2 lead"></i>Gastos</a>
+            <a  class="btn-g mx-3" href="<?= base_url("index.php/Ganancias")?>" class="d-block text-light p-3"><i class="bi bi-currency-dollar mx-2 lead"></i>Ganancias</a>
           </div>
           
         </div>  
@@ -122,13 +132,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                 </div>
-                <div class="d-grid gap-2 d-md-block my-5">
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#agregar_gastos" aria-controls="offcanvasExample"><i class="fa-solid fa-plus"></i>
-                   Agregar
-                </button>
-                     <button type="submit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="fa-solid fa-file-excel"></i> Excel </button>
+                <form action="<?php  base_url();?> excel_personal/exportarDatos" method="post">
                 
+                  <div class="d-grid gap-2 d-md-block my-5">
+                      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-toggle="offcanvas" href="#agregar_gastos"  aria-controls="offcanvasScrolling"><i class="bi bi-plus-lg"></i> Agregar</button>
+
+                      <button  type="sumit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="bi bi-file-earmark-excel-fill"></i> Excel</button>
+
+
+
                 </div>
+              </form>
                 
                 
               </form>
@@ -144,9 +158,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                           <th scope="col">No.</th>
                           <th scope="col">Fecha</th>
+                           <th scope="col">Nombre Del Camion</th>
                           <th scope="col">Nombre Del Gasto</th>
                            <th scope="col">Precio</th>
-                          <th scope="col">Nombre Del Camion</th>
                           <th scope="col">Editar</th>
                           <th scope="col">Eliminar</th>
                         </tr>
@@ -161,9 +175,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                    <td><?php echo $count++ ?></td>
                                    <td><?php echo $gasto->fecha ?></td>
-                                   <td><?php echo $gasto->nombre ?></td>
-                                   <td><?php echo $gasto->precio ?></td>
                                    <td><?php echo $gasto->camion ?></td>
+                                   <td><?php echo $gasto->nombre ?></td>
+                                   <td>Q.<?php echo number_format($gasto->precio  )?></td>
                                    <td>  <?php echo '<a class="btn btn-warning text-white" data-bs-toggle="offcanvas" href="#agregar_gastos" onclick="llenar_datos('.$gasto->id.',`'.$gasto->fecha.'`,`'.$gasto->nombre.'`,`'.$gasto->precio.'`,`'.$gasto->camion.'`)"><i class="bi bi-pencil-square"></i></a></td>
                                     <td><a href="'.base_url('index.php/gastos/eliminar/'.$gasto->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/></td>  '?>
 

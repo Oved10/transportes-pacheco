@@ -18,6 +18,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <input type="date" name="Fecha" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese La Fecha" id="F">
                   </div>  
 
+                  <div class="form-group col-sm-12 my-3">
+                    <label for=""  >Camion</label>
+                    <input type="text" name="Camion" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Nombre Del Camion" id="C"><br>
+                    
+                  </div>
+
                     <div class="form-group col-sm-12">
                     <label for=""  >Nombre</label>
                     <input type="text" name="name" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Nombre Del Gasto" id="N"><br>
@@ -28,11 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <input type="text" name="Precio" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Precio Del Gasto" id="P"><br>
                     
                   </div>
-                    <div class="form-group col-sm-12">
-                    <label for=""  >Camion</label>
-                    <input type="text" name="Camion" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Nombre Del Camion" id="C"><br>
-                    
-                  </div>
+                     
 
 
                 </div>

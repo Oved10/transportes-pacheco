@@ -72,9 +72,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
           </div>
           <div class="menu">
-                 <a class="btn-v mx-3" href="<?= base_url("index.php/Viajes")?>" class="d-block text-light my-3 p-3"><i class="fa-sharp fa-solid fa-road mx-2 lead"></i>Viaje</a>
+            <a class="btn-v mx-3" href="<?= base_url("index.php/Viajes")?>" class="d-block text-light my-3 p-3"><i class="fa-sharp fa-solid fa-road mx-2 lead"></i>Viaje</a>
             <a class="btn-b mx-3" href="<?= base_url("index.php/camion")?>" class="d-block text-light p-3"><i class="bi bi-truck mx-2 lead"></i>Camion</a>
-             <div class="btn-group dropend">
+            <div class="btn-group dropend">
             <button class="btn-p mx-3 " type="button" data-bs-toggle="dropdown"><i class="bi bi-people-fill mx-2 lead"></i>
             Personal
             </button>
@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
                   <li class="nav-item">
-                    <a class="nav-link active titulo" style="color: gold" aria-current="page" href="">Registro De Personal</a>
+                    <a class="nav-link active titulo" style="color: gold" aria-current="page" href="">Registro De Ganancias</a>
                   </li>
                 </ul>
               </div>
@@ -109,29 +109,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                    <h5  style="color: white">Buscar Por:</h5>
                   <div class="form-group col-sm-4">
-                    <label for=""  style="color: white" >Nombre</label>
-                    <input type="text" name="name" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese El Nombre" id="name">
-                  </div> 
-                    <div class="form-group col-sm-4">
-                    <label for=""  style="color: white" >Puesto</label>
-                    <input type="text" name="Puesto" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese El Puesto" id="Puesto">
+                    <label for=""  style="color: white" >Fecha</label>
+                    <input type="date" name="Placa" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese La Placa" id="P">
                   </div>  
 
                     <div class="form-group col-sm-4">
-                    <label for=""   style="color: white">Estado</label>
-                    <input type="text" name="Estado" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Nombre Del Camion" id="Estado"><br>
+                    <label for=""   style="color: white">Camion</label>
+                    <input type="text" name="name" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese La Placa" id="N"><br>
                     
                   </div> 
 
 
-
                 </div>
-                        
-              </form>
-              <form action="<?php  base_url();?> excel_personal/exportarDatos" method="post">
+               <form action="<?php  base_url();?> excel_personal/exportarDatos" method="post">
                 
                   <div class="d-grid gap-2 d-md-block my-5">
-                      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-plus-lg"></i> Agregar</button>
+                      
 
                       <button  type="sumit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="bi bi-file-earmark-excel-fill"></i> Excel</button>
 
@@ -139,59 +132,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 </div>
               </form>
-
-
+                
+                
+              </form>
               
             </div>
-            <div class="row">
-              <div class="col-12">
-        
-                <div class="card-header">                                
+            <div class="row mx-6">
+              <div class="col-6">           
+                <div class="card-header ">                                
                 </div>
                 <div class="card-body">
                   <table class="table table-dark table-striped table_id ">
                       <thead>
                         <tr>
                           <th scope="col">No.</th>
-                          <th scope="col">Nombre</th>
-                          <th scope="col">Telefono</th>
-                          <th scope="col">Puesto</th>
-                          <th scope="col">Estado</th>
-                          <th scope="col">Acciones</th>
-                          
-                       
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Nombre Del Camion</th>
+                          <th scope="col">Total</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                          $count =1;
+                       <?php
+                              $count =1;
 
-                          foreach ($personal as $persona):?>
-                             
-                                <tr>
+                              foreach ($viajes as $viaje):?>
+                               
+                                    <tr>
 
-                                   <td><?php echo $count++ ?></td>
-                                   <td><?php echo $persona->nombre ?></td>
-                                   <td>+<?php echo $persona->pais ?> <?php echo $persona->telefono ?> </td>
-                                   <td><?php echo $persona->puesto ?></td>
-                                   <td><?php echo $persona->estado ?></td>
-                                   <td><?php echo '  
-                                    <button type="button" class="btn btn-info text-white"
-                                   data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
+                                       <td><?php echo $count++ ?></td>
+                                       <td><?php echo  $viaje->fecha_salida?> </td>
+                                       <td><?php echo $viaje->camion; ?> </td>
+                                        <td>
 
-                                    onclick="llenar_datos('.$persona->id.',`'.$persona->nombre.'`,`'.$persona->pais.'`,`'.$persona->telefono.'`,`'.$persona->puesto.'`,`'.$persona->estado.'`,`'.$persona->comentario.'`)"><i class="bi bi-pencil"></i> </button>
+                                          Q.<?php $total=0; ?> 
 
-                                    <a href="'.base_url('index.php/personal/eliminar/'.$persona->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/>
+                                          <?php $MD=0; ?> <?php $D=$viaje->disel ?> <?php $P=$viaje->precio_disel ?><?php $G=$viaje->gastos ?> <?php $Vv=$viaje->valor_viaje ?>
+                                          <?php $MD=$P*$D?> <?php $total=$Vv-$MD-$G ?>
 
-                                    </td>  
-                                   '?>
+                                          <?php echo number_format($total); ?>
+
+                                      </td>
 
 
-                                </tr>
+                                    </tr>
 
-                            
-                          
-                        <?php endforeach; ?>
+                                
+                              
+                            <?php endforeach ?>
                       </tbody>
                     </table>
                   
@@ -211,7 +198,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <!-- Fin Menu Lateral-->
 
-    <script src="<?= base_url('public/js/personal.js'); ?>"></script>
+     
     <script src="<?= base_url('public/js/buscar_camion.js'); ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>

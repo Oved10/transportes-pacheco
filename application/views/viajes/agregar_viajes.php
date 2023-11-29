@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div> 
 
                     <div class="form-group col-sm-12 my-3">
-                    <label for=""  style="color: white">Precio Del Disel</label>
+                    <label for=""  style="color: white">Precio Del Diesel</label>
                     <input type="text" name="PDisel" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Q" id="PDisel">
                   </div>
 
@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         let url="<?php  echo base_url('index.php/viajes/editar');?>";
 
         
-        const llenar_datos=(id,fecha_salida,fecha_entrada,camion,valor_viaje,disel,precio_disel,gastos)=>{
+        const llenar_datos=(id,fecha_salida,fecha_entrada,camion,valor_viaje,precio_disel,disel,gastos)=>{
            let path = url+"/"+id;
             document.getElementById('form-viaje').setAttribute('action',path);
 

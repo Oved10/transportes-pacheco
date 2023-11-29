@@ -38,6 +38,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               text-decoration: none;
 
             }
+            .btn-g{
+              display: inline-block;
+              margin: 20px 10px;
+              background-color: black;
+              color: yellow;
+              padding: 10px 60px;
+              text-decoration: none;
+
+            }
             .titulo{
               font-size: 20px;
             }
@@ -58,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="d-flex">
         <div id="sidebar-container"class="bg-warning">
           <div class="logo">
-            <h4 class="text-dark font-weight-bold my-3 mx-5">Transportes Pacheco</h4><img src="<?= base_url('public/img/logo.jpg')?>" class="img-fluid rounded-circle logo mr-2 mx-5">
+            <h4 class="text-dark font-weight-bold my-3 mx-5" style="font-family: Alegrian; font-size: 30px ; text-align: center;">Transportes Pacheco</h4><img src="<?= base_url('public/img/logo.jpg')?>" class="img-fluid rounded-circle logo mr-2 mx-5">
             <br>
             
           </div>
@@ -76,6 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
           </div>
             <a  class="btn-b mx-3" href="<?= base_url("index.php/Gastos")?>" class="d-block text-light p-3"><i class="bi bi-gear mx-2 lead"></i>Gastos</a>
+            <a  class="btn-g mx-3" href="<?= base_url("index.php/Ganancias")?>" class="d-block text-light p-3"><i class="bi bi-currency-dollar mx-2 lead"></i>Ganancias</a>
           </div>
           
         </div>  
