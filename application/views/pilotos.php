@@ -116,14 +116,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                 </div>
+
+                </form>
+                <form action="<?php  base_url();?> excel_pilotos/exportarDatos" method="post">
                 <div class="d-grid gap-2 d-md-block my-5">
                       <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="fa-solid fa-plus"></i> Agregar</button>
-                     <button type="submit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="fa-solid fa-file-excel"></i> Excel </button>
-                
+                      <button type="submit" class= "btn btn-success btn-block " style="padding: 8px 20px "><i class="fa-solid fa-file-excel"></i> Excel </button>
                 </div>
-                
-                
-              </form>
+                </form>  
               
             </div>
             <div class="row">
