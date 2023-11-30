@@ -4,11 +4,10 @@ require_once ("_db.php");
 header("Content-Type: application/xls");
 header("Content-Disposition: attachment; filename=reportePersonal.xls");
 ?>
-<table class="table table-dark table-striped table_id ">
+  <div class="conteiner">
+    <h2>Reporte de pilotos</h2>
+    <table id=“” class=“table table-striped table-bordered”>
                       <thead>
-                        <tr>
-                          <img src="public/img/fondo.jpeg"/>
-                        </tr>>
                         <tr>
                           <th scope="col">No.</th>
                           <th scope="col">Nombre</th>
@@ -53,3 +52,4 @@ header("Content-Disposition: attachment; filename=reportePersonal.xls");
                         <?php endforeach; ?>
                       </tbody>
                     </table>
+ </div>>

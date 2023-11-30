@@ -30,16 +30,16 @@ class excel_pilotos extends CI_Controller {
     $salida = '';
 
     $salida .=  '
-
-    <table class="table table-dark table-striped table_id ">
+    <h1>Reporte de pilotos</h1>
+    <table id=“” class=“table table-striped table-bordered”>
                       <thead>
                         <tr>
-                          <th style="background-color: black; color:gold; width: 150px">Nombre</th>
-                          <th style="background-color: black; color:gold; width: 150px">No.Licencia</th>
-                          <th style="background-color: black; color:gold; width: 150px">Fecha De Vencimiento</th>
-                          <th style="background-color: black; color:gold; width: 150px">Telefono</th>
-                          <th style="background-color: black; color:gold; width: 150px">Camión</th>
-                          <th style="background-color: black; color:gold; width: 150px">Estado</th>
+                          <th>Nombre</th>
+                          <th>No.Licencia</th>
+                          <th>Fecha De Vencimiento</th>
+                          <th>Telefono</th>
+                          <th>Camión</th>
+                          <th>Estado</th>
 
                         </tr>
                       </thead>
