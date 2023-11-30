@@ -127,6 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                 </div>
+
                 <form action="<?php  base_url();?> excel_personal/exportarDatos" method="post">
                 
                   <div class="d-grid gap-2 d-md-block my-5">
@@ -141,6 +142,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 
                 
               </form>
+
+
+                </form>
+                
+
               
             </div>
             <div class="row">
