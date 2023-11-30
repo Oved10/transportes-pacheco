@@ -20,6 +20,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
     <!--  Datatables Responsive  -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+
+
+
+
     <link rel="stylesheet" type="text/css" href="<?= base_url('public/estilos.css') ?>">
 
         <style type="text/css">
@@ -123,19 +131,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <h5  style="color: white">Buscar Por:</h5>
                   <div class="form-group col-sm-4">
                     <label for="" style="color: white">Fecha De Salida</label>
-                    <input type="date" name="desde" class="form-control me-2 light-table-filter"  id="desde" value="<?php if(isset($_GET['desde'])) {echo $_GET['desde'];}?>" >
+                    <input type="date" name="desde" class="form-control me-2 light-table-filter"  id="desde" data-table="table_id" >
                   </div>  
 
 
 
                   <div class="form-group col-sm-4">
                     <label for="" style="color: white" >Fecha De Entrada</label>
-                    <input type="date" name="hasta" class="form-control me-2 light-table-filter"   id="hasta" value="<?php if(isset($_GET['desde'])) {echo $_GET['desde'];}?>">
+                    <input type="date" name="hasta" class="form-control me-2 light-table-filter"   id="hasta" data-table="table_id">
                   </div> 
 
                   <div class="form-group col-sm-4">
                     <label for="" style="color: white" >Placa Del Camion</label>
-                    <input type="text" name="camion" class="form-control me-2 light-table-filter" id="camion" >
+                    <input type="text" name="camion" class="form-control me-2 light-table-filter" id="camion" data-table="table_id" >
 
                   </div> 
 
@@ -159,7 +167,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="card-header">                                
                     </div>
                     <div class="card-body">
-                      <table id="dataviaje" class="table table-dark table-striped table_id ">
+                      <table id="dataviaje" class="table table-striped table-bordered table-warning table_id ">
                           <thead>
                             <tr>
                               <th scope="col">No.</th>
@@ -248,6 +256,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Datatables-->
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
     <!-- Datatables responsive -->
+
+    <script type="text/javascript " src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
     
 
          <script>
@@ -255,7 +268,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $('#dataviaje').DataTable({
 
                 responsive: true,
-                lengthMenu: [5,6,10],
+                lengthMenu: [3,6,10],
                  columnDefs: [
                 { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6] },
                 { orderable: false, targets: [5, 6] },
@@ -264,6 +277,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             ],
             pageLength: 3,
              destroy: true,
+                       dom: 'Bfrtip',
+            buttons: [ {
+            extend: 'excelHtml5',
+            text:      '<integrity class="bi bi-file-earmark-excel-fill"></i> ',
+            autoFilter: true,
+            sheetName: 'Exported data',
+            class: 'btn btn-success'
+        } ],
             language: {
                 lengthMenu: "Mostrar _MENU_ registros por página",
                 zeroRecords: "Ningún usuario encontrado",
