@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script src="https://kit.fontawesome.com/273a33183e.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-        <!--Componentes De Datatables-->
+         <!--Componentes De Datatables-->
 
               <!--Bootstrap CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -24,6 +24,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchbuilder/1.6.0/css/searchBuilder.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
+
+
 
 
 
@@ -170,10 +176,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <table id="dataviaje" class="table table-striped table-bordered table-warning table_id ">
                           <thead>
                             <tr>
-                              <th scope="col">No.</th>
-                              <th scope="col">Fecha De Salida</th>
-                              <th scope="col">Fecha De Entrada</th>
-                              <th scope="col">Camion</th>
+                                <th >No.</th>
+                               <th >Fecha De Entrada</th>
+                              <th >Fecha De salida</th>                           
+                              <th >Camion</th>
                               <th scope="col">Valor De Viaje</th>
                               <th scope="col">Precio Diesel</th>
                               <th scope="col">Diesel Consumido</th>
@@ -192,9 +198,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                
                                     <tr>
 
-                                       <td><?php echo $count++ ?></td>
+                                       <td><?php echo $count++ ?></td>                                        
+                                      <td><?php echo $viaje->fecha_entrada ;?>  </td>
                                        <td><?php echo  $viaje->fecha_salida?> </td>
-                                       <td><?php echo $viaje->fecha_entrada ;?>  </td>
                                        <td><?php echo $viaje->camion; ?> </td>
                                        <td>Q.<?php echo number_format($viaje->valor_viaje  ); ?> </td>
                                         <td>Q.<?php echo number_format($viaje->precio_disel ) ; ?> </td>
@@ -261,9 +267,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/searchbuilder/1.6.0/js/dataTables.searchBuilder.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
     
 
-         <script>
+  <script>
         $(document).ready(function(){
             $('#dataviaje').DataTable({
 
@@ -277,29 +286,258 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             ],
             pageLength: 3,
              destroy: true,
-                       dom: 'Bfrtip',
+                       dom: 'Q Bfrtip ',
             buttons: [ {
             extend: 'excelHtml5',
-            text:      '<integrity class="bi bi-file-earmark-excel-fill"></i> ',
+            text:      '<integrity class="bi bi-file-earmark-excel-fill"> Excel</i> ',
             autoFilter: true,
             sheetName: 'Exported data',
-            class: 'btn btn-success'
+            className: 'btn btn-success'
         } ],
             language: {
-                lengthMenu: "Mostrar _MENU_ registros por página",
-                zeroRecords: "Ningún usuario encontrado",
-                info: "Mostrando de _START_ a _END_ de un total de _TOTAL_ registros",
-                infoEmpty: "Ningún usuario encontrado",
-                infoFiltered: "(filtrados desde _MAX_ registros totales)",
-                search: "Buscar:",
-                loadingRecords: "Cargando...",
-                paginate: {
-                    first: "Primero",
-                    last: "Último",
-                    next: "Siguiente",
-                    previous: "Anterior"
-                }
+    "processing": "Procesando...",
+    "lengthMenu": "Mostrar _MENU_ registros",
+    "zeroRecords": "No se encontraron resultados",
+    "emptyTable": "Ningún dato disponible en esta tabla",
+    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+    "search": "Buscar:",
+    "loadingRecords": "Cargando...",
+    "paginate": {
+        "first": "Primero",
+        "last": "Último",
+        "next": "Siguiente",
+        "previous": "Anterior"
+    },
+    "aria": {
+        "sortAscending": ": Activar para ordenar la columna de manera ascendente",
+        "sortDescending": ": Activar para ordenar la columna de manera descendente"
+    },
+    "buttons": {
+        "copy": "Copiar",
+        "colvis": "Visibilidad",
+        "collection": "Colección",
+        "colvisRestore": "Restaurar visibilidad",
+        "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
+        "copySuccess": {
+            "1": "Copiada 1 fila al portapapeles",
+            "_": "Copiadas %ds fila al portapapeles"
+        },
+        "copyTitle": "Copiar al portapapeles",
+        "csv": "CSV",
+        "excel": "Excel",
+        "pageLength": {
+            "-1": "Mostrar todas las filas",
+            "_": "Mostrar %d filas"
+        },
+        "pdf": "PDF",
+        "print": "Imprimir",
+        "renameState": "Cambiar nombre",
+        "updateState": "Actualizar",
+        "createState": "Crear Estado",
+        "removeAllStates": "Remover Estados",
+        "removeState": "Remover",
+        "savedStates": "Estados Guardados",
+        "stateRestore": "Estado %d"
+    },
+    "autoFill": {
+        "cancel": "Cancelar",
+        "fill": "Rellene todas las celdas con <i>%d<\/i>",
+        "fillHorizontal": "Rellenar celdas horizontalmente",
+        "fillVertical": "Rellenar celdas verticalmente"
+    },
+    "decimal": ",",
+    "searchBuilder": {
+        "add": "Añadir condición",
+        "button": {
+            "0": "Constructor de búsqueda",
+            "_": "Constructor de búsqueda (%d)"
+        },
+        "clearAll": "Borrar todo",
+        "condition": "Condición",
+        "conditions": {
+            "date": {
+                "before": "Antes",
+                "between": "Entre",
+                "empty": "Vacío",
+                "equals": "Igual a",
+                "notBetween": "No entre",
+                "not": "Diferente de",
+                "after": "Después",
+                "notEmpty": "No Vacío"
+            },
+            "number": {
+                "between": "Entre",
+                "equals": "Igual a",
+                "gt": "Mayor a",
+                "gte": "Mayor o igual a",
+                "lt": "Menor que",
+                "lte": "Menor o igual que",
+                "notBetween": "No entre",
+                "notEmpty": "No vacío",
+                "not": "Diferente de",
+                "empty": "Vacío"
+            },
+            "string": {
+                "contains": "Contiene",
+                "empty": "Vacío",
+                "endsWith": "Termina en",
+                "equals": "Igual a",
+                "startsWith": "Empieza con",
+                "not": "Diferente de",
+                "notContains": "No Contiene",
+                "notStartsWith": "No empieza con",
+                "notEndsWith": "No termina con",
+                "notEmpty": "No Vacío"
+            },
+            "array": {
+                "not": "Diferente de",
+                "equals": "Igual",
+                "empty": "Vacío",
+                "contains": "Contiene",
+                "notEmpty": "No Vacío",
+                "without": "Sin"
             }
+        },
+        "data": "Data",
+        "deleteTitle": "Eliminar regla de filtrado",
+        "leftTitle": "Criterios anulados",
+        "logicAnd": "Y",
+        "logicOr": "O",
+        "rightTitle": "Criterios de sangría",
+        "title": {
+            "0": "Constructor de búsqueda",
+            "_": "Constructor de búsqueda (%d)"
+        },
+        "value": "Valor"
+    },
+    "searchPanes": {
+        "clearMessage": "Borrar todo",
+        "collapse": {
+            "0": "Paneles de búsqueda",
+            "_": "Paneles de búsqueda (%d)"
+        },
+        "count": "{total}",
+        "countFiltered": "{shown} ({total})",
+        "emptyPanes": "Sin paneles de búsqueda",
+        "loadMessage": "Cargando paneles de búsqueda",
+        "title": "Filtros Activos - %d",
+        "showMessage": "Mostrar Todo",
+        "collapseMessage": "Colapsar Todo"
+    },
+    "select": {
+        "cells": {
+            "1": "1 celda seleccionada",
+            "_": "%d celdas seleccionadas"
+        },
+        "columns": {
+            "1": "1 columna seleccionada",
+            "_": "%d columnas seleccionadas"
+        },
+        "rows": {
+            "1": "1 fila seleccionada",
+            "_": "%d filas seleccionadas"
+        }
+    },
+    "thousands": ".",
+    "datetime": {
+        "previous": "Anterior",
+        "hours": "Horas",
+        "minutes": "Minutos",
+        "seconds": "Segundos",
+        "unknown": "-",
+        "amPm": [
+            "AM",
+            "PM"
+        ],
+        "months": {
+            "0": "Enero",
+            "1": "Febrero",
+            "10": "Noviembre",
+            "11": "Diciembre",
+            "2": "Marzo",
+            "3": "Abril",
+            "4": "Mayo",
+            "5": "Junio",
+            "6": "Julio",
+            "7": "Agosto",
+            "8": "Septiembre",
+            "9": "Octubre"
+        },
+        "weekdays": {
+            "0": "Dom",
+            "1": "Lun",
+            "2": "Mar",
+            "4": "Jue",
+            "5": "Vie",
+            "3": "Mié",
+            "6": "Sáb"
+        },
+        "next": "Próximo"
+    },
+    "editor": {
+        "close": "Cerrar",
+        "create": {
+            "button": "Nuevo",
+            "title": "Crear Nuevo Registro",
+            "submit": "Crear"
+        },
+        "edit": {
+            "button": "Editar",
+            "title": "Editar Registro",
+            "submit": "Actualizar"
+        },
+        "remove": {
+            "button": "Eliminar",
+            "title": "Eliminar Registro",
+            "submit": "Eliminar",
+            "confirm": {
+                "_": "¿Está seguro de que desea eliminar %d filas?",
+                "1": "¿Está seguro de que desea eliminar 1 fila?"
+            }
+        },
+        "error": {
+            "system": "Ha ocurrido un error en el sistema (<a target=\"\\\" rel=\"\\ nofollow\" href=\"\\\">Más información&lt;\\\/a&gt;).<\/a>"
+        },
+        "multi": {
+            "title": "Múltiples Valores",
+            "restore": "Deshacer Cambios",
+            "noMulti": "Este registro puede ser editado individualmente, pero no como parte de un grupo.",
+            "info": "Los elementos seleccionados contienen diferentes valores para este registro. Para editar y establecer todos los elementos de este registro con el mismo valor, haga clic o pulse aquí, de lo contrario conservarán sus valores individuales."
+        }
+    },
+    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+    "stateRestore": {
+        "creationModal": {
+            "button": "Crear",
+            "name": "Nombre:",
+            "order": "Clasificación",
+            "paging": "Paginación",
+            "select": "Seleccionar",
+            "columns": {
+                "search": "Búsqueda de Columna",
+                "visible": "Visibilidad de Columna"
+            },
+            "title": "Crear Nuevo Estado",
+            "toggleLabel": "Incluir:",
+            "scroller": "Posición de desplazamiento",
+            "search": "Búsqueda",
+            "searchBuilder": "Búsqueda avanzada"
+        },
+        "removeJoiner": "y",
+        "removeSubmit": "Eliminar",
+        "renameButton": "Cambiar Nombre",
+        "duplicateError": "Ya existe un Estado con este nombre.",
+        "emptyStates": "No hay Estados guardados",
+        "removeTitle": "Remover Estado",
+        "renameTitle": "Cambiar Nombre Estado",
+        "emptyError": "El nombre no puede estar vacío.",
+        "removeConfirm": "¿Seguro que quiere eliminar %s?",
+        "removeError": "Error al eliminar el Estado",
+        "renameLabel": "Nuevo nombre para %s:"
+    },
+    "infoThousands": "."
+} 
 
 
 
