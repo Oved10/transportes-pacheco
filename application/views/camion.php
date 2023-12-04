@@ -7,9 +7,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Transportes Pacheco</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-        <link rel="stylesheet" type="text/css" href="<?= base_url('public/estilos.css') ?>">
+         
         <script src="https://kit.fontawesome.com/273a33183e.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+         <!--Componentes De Datatables-->
+
+              <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <!--  Datatables  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
+    <!--  Datatables Responsive  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchbuilder/1.6.0/css/searchBuilder.dataTables.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
+
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="<?= base_url('public/estilos.css') ?>">
+
+
+
         <style type="text/css">
          
            .btn-b{
@@ -67,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="d-flex">
         <div id="sidebar-container"class="bg-warning">
           <div class="logo">
-            <h4 class="text-dark font-weight-bold my-3 mx-5" style="font-family: Alegrian; font-size: 30px ; text-align: center;">Transportes Pacheco</h4><img src="<?= base_url('public/img/logo.jpg')?>" class="img-fluid rounded-circle logo mr-2 mx-5">
+             <img src="<?= base_url('public/img/logo.jpg')?>" class="img-fluid rounded-circle logo mr-2 mx-5">
             <br>
             
           </div>
@@ -104,45 +133,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </nav>
           <!--Datos-->
            <div class="container-fluid my-5">
-            <div class="mb-5">
-              <form>  
-                <div class="row">
-                   <h5  style="color: white">Buscar Por:</h5>
-                  <div class="form-group col-sm-4">
-                    <label for=""  style="color: white" >Placa</label>
-                    <input type="text" name="Placa" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Ingrese La Placa" id="P">
-                  </div>  
-
-                    <div class="form-group col-sm-4">
-                    <label for=""   style="color: white">Nombre</label>
-                    <input type="text" name="name" class="form-control me-2 light-table-filter" data-table="table_id" required placeholder="Nombre Del Camion" id="N"><br>
-                    
-                  </div> 
-
-
-                </div>
-               <form action="<?php  base_url();?> excel_personal/exportarDatos" method="post">
-                
-                  <div class="d-grid gap-2 d-md-block my-5">
+             <div class="d-grid gap-2 d-md-block my-5">
                       <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-plus-lg"></i> Agregar</button>
-
-                      <button  type="sumit" class="btn btn-success btn-block " style="padding: 8px 20px "><i class="bi bi-file-earmark-excel-fill"></i> Excel</button>
-
-
-
                 </div>
-              </form>
-                
-                
-              </form>
-              
-            </div>
+           
             <div class="row mx-6">
               <div class="col-6">           
                 <div class="card-header ">                                
                 </div>
                 <div class="card-body">
-                  <table class="table table-dark table-striped table_id ">
+                  <table  id="dataviaje" class="table table-striped table-bordered table-warning table_id ">
                       <thead>
                         <tr>
                           <th scope="col">No.</th>
@@ -196,6 +196,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
      
     <script src="<?= base_url('public/js/buscar_camion.js'); ?>"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <!--Libreria De DataTableJS-->
+        <!--Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <!-- Datatables-->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
+    <!-- Datatables responsive -->
+
+    <script type="text/javascript " src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript " src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/searchbuilder/1.6.0/js/dataTables.searchBuilder.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
+    
+
+  <script>
+        $(document).ready(function(){
+            $('#dataviaje').DataTable({
+
+                responsive: true,
+                lengthMenu: [3,6,10],
+                 columnDefs: [
+                { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6] },
+                { orderable: false, targets: [5, 6] },
+                { searchable: false, targets: [1] }
+                //{ width: "50%", targets: [0] }
+            ],
+            pageLength: 2,
+             destroy: true,
+                       dom: 'Q Brtip ',
+            buttons: [ {
+            extend: 'excelHtml5',
+            text:      '<integrity class="bi bi-file-earmark-excel-fill"> Excel</i> ',
+            autoFilter: true,
+            sheetName: 'Exported data',
+            className: 'btn btn-success'
+        } ],
+             
+
+        });
+
+    </script>
   </body>
 </html>

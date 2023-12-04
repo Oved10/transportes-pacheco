@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="d-flex">
         <div id="sidebar-container"class="bg-warning">
           <div class="logo">
-            <h4 class="text-dark font-weight-bold my-3 mx-5" style="font-family: Alegrian; font-size: 30px ; text-align: center;">Transportes Pacheco</h4><img src="<?= base_url('public/img/logo.jpg')?>" class="img-fluid rounded-circle logo mr-2 mx-5">
+            <img src="<?= base_url('public/img/logo.jpg')?>" class="img-fluid rounded-circle logo mr-2 mx-5">
             <br>
             
           </div>

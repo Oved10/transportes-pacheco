@@ -92,14 +92,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <!--Menu Lateral-->
       <div class="d-flex">
         <div id="sidebar-container"class="bg-warning">
+           
           <div class="logo">
-            <h4 class="text-dark font-weight-bold my-3 mx-5" style="   font-family: Alegrian;   font-size: 30px ; text-align: center;">Transportes Pacheco</h4><img src="<?= base_url('public/img/logo.jpg')?>" class="img-fluid rounded-circle logo mr-2 mx-5">
-            <br>
+           <img src="<?= base_url('public/img/logo.jpg')?>" class="img-fluid rounded-circle logo mr-2 mx-5">
+
+            
             
           </div>
+          
           <div class="menu">
             <a class="btn-v mx-3
-            " href="<?= base_url("index.php/Viajes")?>" class="d-block text-light my-3 p-3"><i class="bi bi-sign-merge-right mx-2 lead"></i>Viaje</a>
+            " href="<?= base_url("index.php/Viajes")?>" class="d-block text-light "><i class="bi bi-sign-merge-right mx-2 lead"></i>Viaje</a>
             <a class="btn-b mx-3" href="<?= base_url("index.php/camion")?>" class="d-block text-light p-3"><i class="bi bi-truck mx-2 lead"></i>Camion</a>
             <div class="btn-group dropend">
             <button class="btn-p mx-3 " type="button" data-bs-toggle="dropdown"><i class="bi bi-people-fill mx-2 lead"></i>
@@ -130,42 +133,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
           </nav>
           <!--Contenido-->
-          <div class="container-fluid my-5">
-            <div class="">
-              <form action="<?php  base_url();?> viajes/exportarDatos" method="post"> 
-                <div class="row">
-                  <h5  style="color: white">Buscar Por:</h5>
-                  <div class="form-group col-sm-4">
-                    <label for="" style="color: white">Fecha De Salida</label>
-                    <input type="date" name="desde" class="form-control me-2 light-table-filter"  id="desde" data-table="table_id" >
-                  </div>  
-
-
-
-                  <div class="form-group col-sm-4">
-                    <label for="" style="color: white" >Fecha De Entrada</label>
-                    <input type="date" name="hasta" class="form-control me-2 light-table-filter"   id="hasta" data-table="table_id">
-                  </div> 
-
-                  <div class="form-group col-sm-4">
-                    <label for="" style="color: white" >Placa Del Camion</label>
-                    <input type="text" name="camion" class="form-control me-2 light-table-filter" id="camion" data-table="table_id" >
-
-                  </div> 
-
-                   
-
-                      <div class="d-grid gap-2 d-md-block  ">
-                      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-plus-lg"></i> Agregar</button>
-
-
-                </div>
-                
-
-                </div>
-                     
-                
-             </form>
+          <div class="container-fluid ">
+            <div class="row">
+                  
                   
                 </div>
                 <div class="row">
@@ -196,14 +166,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                               foreach ($viajes as $viaje):?>
                                
-                                    <tr>
+                                    <tr>   
 
                                        <td><?php echo $count++ ?></td>                                        
                                       <td><?php echo $viaje->fecha_entrada ;?>  </td>
                                        <td><?php echo  $viaje->fecha_salida?> </td>
                                        <td><?php echo $viaje->camion; ?> </td>
                                        <td>Q.<?php echo number_format($viaje->valor_viaje  ); ?> </td>
-                                        <td>Q.<?php echo number_format($viaje->precio_disel ) ; ?> </td>
+                                        <td>Q.<?php echo $viaje->precio_disel  ; ?> </td>
                                        <td><?php echo $viaje->disel ?> gal</td>                                     
                                        <td>Q.<?php echo number_format($viaje->gastos )  ?> </td>
                                         <td>
@@ -229,6 +199,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <?php endforeach ?>
                           </tbody>
                         </table>
+                           <form action="<?php  base_url();?> viajes/exportarDatos" method="post"> 
+                <div class="row">
+                      <div class="d-grid gap-2 d-md-block  ">
+                      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-plus-lg"></i> Agregar</button>
+
+
+                </div>
+                
+
+                </div>
+                     
+                
+             </form>
                       
                     </div>
                    </div>
@@ -284,9 +267,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 { searchable: false, targets: [1] }
                 //{ width: "50%", targets: [0] }
             ],
-            pageLength: 3,
+            pageLength: 2,
              destroy: true,
-                       dom: 'Q Bfrtip ',
+                       dom: 'QBrtip ',
             buttons: [ {
             extend: 'excelHtml5',
             text:      '<integrity class="bi bi-file-earmark-excel-fill"> Excel</i> ',
