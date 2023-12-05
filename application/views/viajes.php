@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title >Transportes Pacheco</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
          
         <script src="https://kit.fontawesome.com/273a33183e.js" crossorigin="anonymous"></script>
@@ -28,11 +29,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchbuilder/1.6.0/css/searchBuilder.dataTables.min.css">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
-
-
-
-
-
 
     <link rel="stylesheet" type="text/css" href="<?= base_url('public/estilos.css') ?>">
 
@@ -143,7 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="card-header">                                
                     </div>
                     <div class="card-body">
-                      <table id="dataviaje" class="table table-striped table-bordered table-warning table_id ">
+                      <table id="dataviaje" class="table table-striped table-bordered table-dark table_id ">
                           <thead>
                             <tr>
                                 <th >No.</th>
@@ -234,7 +230,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  
 
     <script src="<?= base_url('public/js/buscar_viaje.js'); ?>"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
     <!--Libreria De DataTableJS-->
@@ -255,29 +251,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
     
 
-  <script>
-        $(document).ready(function(){
-            $('#dataviaje').DataTable({
+   <script>
+       $(document).ready(function(){
+    var table = $('#dataviaje').DataTable({
+       orderCellsTop: true,
+       fixedHeader: true,
+       responsive: true,
+        lengthMenu: [3,6,10],
 
-                responsive: true,
-                lengthMenu: [3,6,10],
-                 columnDefs: [
-                { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6] },
-                { orderable: false, targets: [5, 6] },
-                { searchable: false, targets: [1] }
-                //{ width: "50%", targets: [0] }
-            ],
-            pageLength: 2,
+              pageLength: 2,
              destroy: true,
                        dom: 'QBrtip ',
             buttons: [ {
-            extend: 'excelHtml5',
-            text:      '<integrity class="bi bi-file-earmark-excel-fill"> Excel</i> ',
-            autoFilter: true,
-            sheetName: 'Exported data',
-            className: 'btn btn-success'
+                extend: 'excelHtml5',
+                text:      '<integrity class="bi bi-file-earmark-excel-fill"> Excel</i> ',
+                autoFilter: true,
+                sheetName: 'Camiones',
+                className: 'btn btn-success',
+                title:'Reporte De Pilotos'
+               
         } ],
-            language: {
+
+language: {
     "processing": "Procesando...",
     "lengthMenu": "Mostrar _MENU_ registros",
     "zeroRecords": "No se encontraron resultados",
