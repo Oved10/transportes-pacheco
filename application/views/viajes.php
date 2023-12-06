@@ -145,7 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <th style="font-size: 14px" >Diesel Consumido</th>
                                <th style="font-size: 14px" >Gasto Diesel</h>
                               <th style="font-size: 14px" >Gastos De Viaje</th>
-                               <th style="font-size: 14px" >Ganancias Del Viaje</th>
+                               <th style="font-size: 14px">Ganancias Del Viaje</th>
                                <th>Editar</th>
                                <th>Eliminar</th>
                                
@@ -168,34 +168,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                        <td>Q.<?php echo number_format($viaje->valor_viaje  ); ?> </td>
                                         <td>Q.<?php echo $viaje->precio_disel  ; ?> </td>
                                        <td><?php echo $viaje->disel ?> gal</td>
-                                       <td>Q
-                                        <?php $m=0; ?>
-                                        <?php $pd=$viaje->precio_disel ?> <?php $d=$viaje->disel ?>
-                                        <?php $m=$pd*$d ?>
-                                        <?php echo  ($m); ?>
-                                         
-                                       </td>                                     
+                                       <td>Q.<?php $m=0; ?><?php $pd=$viaje->precio_disel ?><?php $d=$viaje->disel ?> <?php $m=$pd*$d?><?php echo  ($m); ?></td>
                                        <td>Q.<?php echo number_format($viaje->gastos )  ?> </td>
-                                        <td>
-
-                                          Q.<?php $total=0; ?> 
-
-                                          <?php $MD=0; ?> <?php $D=$viaje->disel ?> <?php $P=$viaje->precio_disel ?><?php $G=$viaje->gastos ?> <?php $Vv=$viaje->valor_viaje ?>
-                                          <?php $MD=$P*$D?> <?php $total=$Vv-$MD-$G ?>
-
-                                          <?php echo number_format($total); ?>
-
+                                        <td>Q.<?php $total=0; ?><?php $MD=0; ?> <?php $D=$viaje->disel ?> <?php $P=$viaje->precio_disel ?><?php $G=$viaje->gastos ?> <?php $Vv=$viaje->valor_viaje ?><?php $MD=$P*$D?> <?php $total=$Vv-$MD-$G ?><?php echo number_format($total); ?>
                                       </td>
-                                       <td> <?php echo '   <button type="button" class="btn btn-warning text-white"
+                                       <td><?php echo '   <button type="button" class="btn btn-warning text-white"
                                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
                                         onclick="llenar_datos('.$viaje->id.',`'.$viaje->fecha_salida.'`,`'.$viaje->fecha_entrada.'`,`'.$viaje->camion.'`,`'.$viaje->valor_viaje.'`,`'.$viaje->precio_disel.'`,`'.$viaje->disel.'`,`'.$viaje->gastos.'`)"><i class="bi bi-pencil-square"></i> </button> </td>
                                         <td><a href="'.base_url('index.php/viajes/eliminar/'.$viaje->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/></td>'; ?>
-
-
                                     </tr>
-
-                                
-                              
                             <?php endforeach ?>
                           </tbody>
                         </table>
