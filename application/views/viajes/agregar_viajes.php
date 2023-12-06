@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   
                     <div class="form-group col-sm-12 my-3">
                     <label for=""  style="color: white">Gastos</label>
-                    <input type="text" name="Gastos" class="form-control me-2 light-table-filter"   required placeholder="Q" id="G">
+                    <input type="text" name="Gastos" class="form-control me-2 light-table-filter"  placeholder="Q" id="G">
                   </div>
 
                   

@@ -30,6 +30,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/datetime/1.5.1/css/dataTables.dateTime.min.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/scroller/2.3.0/css/scroller.dataTables.min.css">
+
     <link rel="stylesheet" type="text/css" href="<?= base_url('public/estilos.css') ?>">
 
         <style type="text/css">
@@ -116,61 +118,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           
         </div>  
 
-        <div class="w-100">
-          <nav class="navbar navbar-expand-lg bg-dark">
-            <div class="container-fluid">
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto">
-                  <li class="nav-item">
-                    <a class="nav-link active titulo" style="color: gold" aria-current="page" href="">Registro De Viajes</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+      
           <!--Contenido-->
-          <div class="container-fluid ">
+          <div class="container ">
             <div class="row">
-                  
+
+                <div class="col-6  my-2">
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="fa-solid fa-plus"></i> Agregar Viaje</button>
                   
                 </div>
-                <div class="row">
-                  <div class="col-12">           
-                    <div class="card-header">                                
-                    </div>
-                    <div class="card-body">
-                      <table id="dataviaje" class="table table-striped table-bordered table-dark table_id ">
+                   
+            </div>         
+                      <table id="dataviaje" class="table table-striped table-bordered table-dark " style="width:100%">
+
+                </div>         
+               
                           <thead>
+
                             <tr>
-                                <th >No.</th>
-                               <th >Fecha De Entrada</th>
-                              <th >Fecha De salida</th>                           
-                              <th >Camion</th>
-                              <th scope="col">Valor De Viaje</th>
-                              <th scope="col">Precio Diesel</th>
-                              <th scope="col">Diesel Consumido</th>
-                              <th scope="col">Gastos De Viaje</th>
-                               <th scope="col">Total Del Viaje</th>
-                              <th scope="col">Editar</th>
-                              <th scope="col">Eliminar</th>
+                                
+                               <th style="font-size: 14px">Fecha De Entrada</th>
+                              <th  style="font-size: 14px">Fecha De salida</th>                           
+                              <th style="font-size: 14px">Camion</th>
+                              <th style="font-size: 14px">Valor De Viaje</th>
+                              <th  style="font-size: 14px">Precio Diesel</th>
+                              <th style="font-size: 14px" >Diesel Consumido</th>
+                               <th style="font-size: 14px" >Gasto Diesel</h>
+                              <th style="font-size: 14px" >Gastos De Viaje</th>
+                               <th style="font-size: 14px" >Ganancias Del Viaje</th>
+                               <th>Editar</th>
+                               <th>Eliminar</th>
+                               
+                               
                             </tr>
                           </thead>
                           <tbody>
 
                             <?php
-                              $count =1;
+                              
 
                               foreach ($viajes as $viaje):?>
                                
                                     <tr>   
 
-                                       <td><?php echo $count++ ?></td>                                        
+                                                                        
                                       <td><?php echo $viaje->fecha_entrada ;?>  </td>
                                        <td><?php echo  $viaje->fecha_salida?> </td>
                                        <td><?php echo $viaje->camion; ?> </td>
                                        <td>Q.<?php echo number_format($viaje->valor_viaje  ); ?> </td>
                                         <td>Q.<?php echo $viaje->precio_disel  ; ?> </td>
-                                       <td><?php echo $viaje->disel ?> gal</td>                                     
+                                       <td><?php echo $viaje->disel ?> gal</td>
+                                       <td>Q
+                                        <?php $m=0; ?>
+                                        <?php $pd=$viaje->precio_disel ?> <?php $d=$viaje->disel ?>
+                                        <?php $m=$pd*$d ?>
+                                        <?php echo  ($m); ?>
+                                         
+                                       </td>                                     
                                        <td>Q.<?php echo number_format($viaje->gastos )  ?> </td>
                                         <td>
 
@@ -195,25 +199,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <?php endforeach ?>
                           </tbody>
                         </table>
-                           <form action="<?php  base_url();?> viajes/exportarDatos" method="post"> 
-                <div class="row">
-                      <div class="d-grid gap-2 d-md-block  ">
-                      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-plus-lg"></i> Agregar</button>
 
-
-                </div>
-                
-
-                </div>
-                     
-                
-             </form>
-                      
-                    </div>
-                   </div>
-
-                  
-                </div>
+           
                 
               </div>
           
@@ -249,6 +236,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <script type="text/javascript" src="https://cdn.datatables.net/searchbuilder/1.6.0/js/dataTables.searchBuilder.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/scroller/2.3.0/js/dataTables.scroller.min.js"></script>
     
 
    <script>
@@ -257,18 +246,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        orderCellsTop: true,
        fixedHeader: true,
        responsive: true,
-        lengthMenu: [3,6,10],
-
-              pageLength: 2,
+          pageLength: 4,
              destroy: true,
+   
+        lengthMenu: [3,6,10],
                        dom: 'QBrtip ',
             buttons: [ {
                 extend: 'excelHtml5',
                 text:      '<integrity class="bi bi-file-earmark-excel-fill"> Excel</i> ',
                 autoFilter: true,
-                sheetName: 'Camiones',
+                sheetName: 'Registro De Viajes',
                 className: 'btn btn-success',
-                title:'Reporte De Pilotos'
+                title:'Reporte De Viajes'
                
         } ],
 

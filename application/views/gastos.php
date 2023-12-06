@@ -146,6 +146,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                            <th scope="col">Nombre Del Camion</th>
                           <th scope="col">Nombre Del Gasto</th>
                            <th scope="col">Precio</th>
+                           <th>Trabajador</th>
+                           <th>Trabajo Hecho</th>
+                           <th>Pago</th>
                           <th scope="col">Editar</th>
                           <th scope="col">Eliminar</th>
                         </tr>
@@ -163,6 +166,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                    <td><?php echo $gasto->camion ?></td>
                                    <td><?php echo $gasto->nombre ?></td>
                                    <td>Q.<?php echo number_format($gasto->precio  )?></td>
+                                   <td>*</td>
+                                   <td>*</td>
+                                   <td>*</td>
                                    <td>  <?php echo '<a class="btn btn-warning text-white" data-bs-toggle="offcanvas" href="#agregar_gastos" onclick="llenar_datos('.$gasto->id.',`'.$gasto->fecha.'`,`'.$gasto->nombre.'`,`'.$gasto->precio.'`,`'.$gasto->camion.'`)"><i class="bi bi-pencil-square"></i></a></td>
                                     <td><a href="'.base_url('index.php/gastos/eliminar/'.$gasto->id).'" type="button" class="btn btn-danger"><i class="bi bi-trash3"></i><a/></td>  '?>
 
@@ -175,6 +181,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       </tbody>
                     </table>
                   
+                </div>
+                       <div class="d-grid gap-2 d-md-block  ">
+                      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#agregar_gastos" aria-controls="offcanvasScrolling"><i class="bi bi-plus-lg"></i> Agregar</button>
+
+
                 </div>
                </div>
 

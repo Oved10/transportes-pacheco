@@ -219,7 +219,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        responsive: true,
         lengthMenu: [3,6,10],
 
-              pageLength: 2,
+              pageLength: 5,
              destroy: true,
                        dom: 'QBrtip ',
             buttons: [ {

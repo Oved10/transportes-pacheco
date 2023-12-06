@@ -239,6 +239,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 sheetName: 'Camiones',
                 className: 'btn btn-success',
                 title:'Reporte De Pilotos'
+                /*excelStyles:{
+
+                }*/
               
         } ],
 
