@@ -114,17 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>  
 
         <div class="w-100">
-          <nav class="navbar navbar-expand-lg bg-dark">
-            <div class="container-fluid">
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto">
-                  <li class="nav-item">
-                    <a class="nav-link active titulo" style="color: gold" aria-current="page" href="">Registro De Ganancias</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+       
           <!--Datos-->
            <div class="container-fluid  ">
             <div class="row mx-6">
@@ -133,9 +123,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="card-body">
                   <table id="datagancia" class="table table-dark table-striped table_id ">
-                      <thead>
+                      <thead >
                         <tr>
-                          <th scope="col">No.</th>
+                          
                           <th scope="col">Fecha</th>
                           <th scope="col">Nombre Del Camion</th>
                           <th scope="col">Total</th>
@@ -143,23 +133,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       </thead>
                       <tbody>
                        <?php
-                              $count =1;
+                              
 
                               foreach ($viajes as $viaje):?>
                                
                                     <tr>
 
-                                       <td><?php echo $count++ ?></td>
+                                        
                                        <td><?php echo  $viaje->fecha_salida?> </td>
                                        <td><?php echo $viaje->camion; ?> </td>
-                                        <td>
-
-                                          Q.<?php $total=0; ?> 
-
-                                          <?php $MD=0; ?> <?php $D=$viaje->disel ?> <?php $P=$viaje->precio_disel ?><?php $G=$viaje->gastos ?> <?php $Vv=$viaje->valor_viaje ?>
-                                          <?php $MD=$P*$D?> <?php $total=$Vv-$MD-$G ?>
-
-                                          <?php echo number_format($total); ?>
+                                        <td>Q.<?php $total=0; ?><?php $MD=0; ?> <?php $D=$viaje->disel ?> <?php $P=$viaje->precio_disel ?><?php $G=$viaje->gastos ?> <?php $Vv=$viaje->valor_viaje ?><?php $MD=$P*$D?> <?php $total=$Vv-$MD-$G ?><?php echo number_format($total); ?>
 
                                       </td>
 
@@ -170,6 +153,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               
                             <?php endforeach ?>
                       </tbody>
+                      <tfoot>
+                        <?php 
+                        echo '   
+                                <tr>
+                                    <th></th>
+                                    <th> </th>
+                                    <th>number_format()</th>
+                                    
+                                 
+                                </tr>
+                            </tfoot>
+                            ';?>
                     </table>
                   
                 </div>
@@ -209,29 +204,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <script type="text/javascript" src="https://cdn.datatables.net/searchbuilder/1.6.0/js/dataTables.searchBuilder.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></script>
+
+
+
+    <script src="https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js"></script>
     
 
-  <script>
-       $(document).ready(function(){
-    var table = $('#datagancia').DataTable({
-       orderCellsTop: true,
+    <script>
+    $(document).ready(function(){
+        var tabla = $("#datagancia").DataTable({
+           orderCellsTop: true,
        fixedHeader: true,
        responsive: true,
         lengthMenu: [3,6,10],
-
-              pageLength: 5,
+                    pageLength: 5,
              destroy: true,
                        dom: 'QBrtip ',
             buttons: [ {
             extend: 'excelHtml5',
             text:      '<integrity class="bi bi-file-earmark-excel-fill"> Excel</i> ',
             autoFilter: true,
-            sheetName: 'Camiones',
+            sheetName: 'Ganancias',
             className: 'btn btn-success',
             title:'Reporte De Ganancias'
         } ],
+  
+              
+                "drawCallback":function(){
+                      //alert("La tabla se está recargando"); 
+                      var api = this.api();
+                      $(api.column(2).footer()).html(
+                          'Total: Q '+api.column(2, {page:'current'}).data().sum()
+                      )
+                },
 
-language: {
+                language: {
     "processing": "Procesando...",
     "lengthMenu": "Mostrar _MENU_ registros",
     "zeroRecords": "No se encontraron resultados",
@@ -476,15 +483,10 @@ language: {
     "infoThousands": "."
 } 
 
-
-
-            });
-
-
         });
 
-
-        
+       
+    });
     </script>
   </body>
 </html>
